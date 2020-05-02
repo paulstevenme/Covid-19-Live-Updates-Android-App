@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFBB1"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/open_sans_semibold"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_marginTop="30dp"
+        android:text="COVID-19 Live Updates"
+        android:textColor="#FFFFFF"
+        android:textSize="30dp" />
+
+
+    <TableLayout
+        android:layout_marginTop="120dp"
+        android:id="@+id/coronoTableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="*"
+        android:visibility="visible"> <!-- stretch the second column of the layout-->
+
+
+        <!-- first row of the table layout-->
+        <TableRow
+
+            android:id="@+id/firstRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#87ceeb"
+                android:padding="18dip"
+                android:text="Active Cases"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/active"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#87ceeb"
+                android:padding="18dip"
+                android:textColor="#00008b"
+                android:textSize="35dp"
+                android:fontFamily="@font/jersey"
+
+               />
+
+        </TableRow>
+        <TableRow
+
+            android:id="@+id/secondRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#90EE90"
+                android:padding="18dip"
+                android:text="Cured/Discharged"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/cured"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#90EE90"
+                android:padding="18dip"
+                android:textColor="#013220"
+                android:textSize="30dp"
+                android:fontFamily="@font/jersey"/>
+
+        </TableRow>
+        <TableRow
+
+            android:id="@+id/thirdRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffcccb"
+                android:padding="18dip"
+                android:text="Deaths"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/deaths"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#ffcccb"
+                android:padding="18dip"
+                android:textColor="#8b0000"
+                android:textSize="30dp"
+                android:fontFamily="@font/jersey"/>
+
+        </TableRow>
+        <TableRow
+
+            android:id="@+id/fourthRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!-- first element of the row-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fed8b1"
+                android:padding="18dip"
+                android:text="Migrated"
+                android:textColor="#000"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/migrated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#fed8b1"
+                android:padding="18dip"
+
+                android:textColor="#FF8C00"
+                android:textSize="30dp"
+                android:fontFamily="@font/jersey"/>
+
+        </TableRow>
+    </TableLayout>
+    <ImageView
+        android:scaleType="fitEnd"
+
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        app:srcCompat="@drawable/splash"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-225dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+
+        android:gravity="bottom|center_horizontal"
+        />
+
+    <Button style="@style/Widget.AppCompat.Button.Colored"
+        android:id="@+id/btnRefresh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Refresh"
+        android:layout_marginTop="430dp"
+        android:layout_centerHorizontal="true"
+        android:drawableLeft="@drawable/refresh"
+        />
+
+    <TextView
+        android:id="@+id/connError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="200dp"
+        android:textSize="25dp"
+        android:text="Please turn ON Internet and Press Refresh Button"
+        android:fontFamily="@font/open_sans_semibold"
+        android:visibility="gone"/>
+
+
+    <com.leo.simplearcloader.SimpleArcLoader
+        android:id="@+id/pbProgess2"
+        android:layout_centerInParent="true"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:arc_style="complete_arc"
+        app:arc_speed="medium"
+        app:arc_margin="3dp"
+        android:tooltipText="Please Wait"
+        >
+    </com.leo.simplearcloader.SimpleArcLoader>
+
+
+
+</RelativeLayout>
