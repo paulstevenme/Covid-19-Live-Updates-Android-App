@@ -179,6 +179,18 @@
         android:fontFamily="@font/open_sans_semibold"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/connServerError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="100dp"
+        android:textSize="25dp"
+        android:text="Server Down"
+        android:fontFamily="@font/open_sans_semibold"
+        android:visibility="gone"/>
+
 
     <com.leo.simplearcloader.SimpleArcLoader
         android:id="@+id/pbProgess2"

@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity  {
 
-    TextView active,cured,death,migrated,ConnError ;
+    TextView active,cured,death,migrated,ConnError, ConnServerError ;
     TableLayout tl;
     SimpleArcLoader arcProgressBar;
 
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
         arcProgressBar = (SimpleArcLoader) findViewById(R.id.pbProgess2);
         ConnError = (TextView) findViewById(R.id.connError);
+        ConnServerError = (TextView) findViewById(R.id.connServerError);
         tl = (TableLayout)findViewById(R.id.coronoTableLayout);
         active = (TextView) findViewById(R.id.active);
         cured = (TextView) findViewById(R.id.cured);
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity  {
         ConnectivityManager ConnectionManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = ConnectionManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected() == true) {
-            tl.setVisibility(View.VISIBLE);
+            tl.setVisibility(View.GONE);
             ConnError.setVisibility(View.GONE);
             arcProgressBar.setVisibility(View.VISIBLE);
             new INDIA().execute();
@@ -68,8 +69,9 @@ public class MainActivity extends AppCompatActivity  {
                 ConnectivityManager ConnectionManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = ConnectionManager.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected() == true) {
-                    tl.setVisibility(View.VISIBLE);
+                    tl.setVisibility(View.GONE);
                     ConnError.setVisibility(View.GONE);
+                    ConnServerError.setVisibility(View.GONE);
                     arcProgressBar.setVisibility(View.VISIBLE);
                     active.setText("");
                     cured.setText("");
@@ -135,13 +137,28 @@ public class MainActivity extends AppCompatActivity  {
 
         @Override
         protected void onPostExecute(ArrayList arrayList) {
-            System.out.println("Execution Completed" );
-            // SET VALUES :
-            active.setText(""+arrayList.get(0));
-            cured.setText(""+arrayList.get(1));
-            death.setText(""+arrayList.get(2));
-            migrated.setText(""+arrayList.get(3));
-            arcProgressBar.setVisibility(View.GONE);
+            System.out.println("Execution Completed" + arrayList );
+            if(arrayList.isEmpty()){
+                // SET VALUES :
+                active.setText("");
+                cured.setText("");
+                death.setText("");
+                migrated.setText("");
+                arcProgressBar.setVisibility(View.GONE);
+                tl.setVisibility(View.GONE);
+                ConnServerError.setVisibility(View.VISIBLE);
+            }
+            else{
+                // SET VALUES :
+                active.setText(""+arrayList.get(0));
+                cured.setText(""+arrayList.get(1));
+                death.setText(""+arrayList.get(2));
+                migrated.setText(""+arrayList.get(3));
+                arcProgressBar.setVisibility(View.GONE);
+                tl.setVisibility(View.VISIBLE);
+
+            }
+
 
             super.onPostExecute(arrayList);
 
